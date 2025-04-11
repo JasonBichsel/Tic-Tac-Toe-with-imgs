@@ -47,3 +47,28 @@ body {
     width: 70%;
     height: 70%;
 }
+
+.winner {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Leichte Skalierung beim Hover */
+}
