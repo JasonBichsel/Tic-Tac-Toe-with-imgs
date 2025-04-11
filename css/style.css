@@ -72,3 +72,24 @@ button:hover {
     background-color: #0056b3;
     transform: scale(1.05); /* Leichte Skalierung beim Hover */
 }
+
+@media (max-width: 600px) {
+    .cell {
+        width: 60px;
+        height: 60px;
+    }
+
+    .board {
+        gap: 5px;
+        padding: 10px; /* Weniger Polsterung für kleinere Bildschirme */
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .winner {
+        font-size: 20px;
+    }
+}
