@@ -10,16 +10,16 @@
     <div>
         <div class="controls">
             <label for="boardSize">Board Size: </label>
-            <select id="boardSize" onchange="">
+            <select id="boardSize" onchange="resetGame()">
                 <option value="3">3x3</option>
                 <option value="4">4x4</option>
                 <option value="5">5x5</option>
             </select>
-            <button onclick="">Toggle Starting Player</button>
+            <button onclick="toggleStartingPlayer()">Toggle Starting Player</button>
         </div>
         <div class="board" id="board"></div>
         <div class="winner" id="winner"></div>
-        <button onclick="">Reset Game</button>
+        <button onclick="resetGame()">Reset Game</button>
     </div>
     <script src="js/Javascript.js"></script>
 </body>
