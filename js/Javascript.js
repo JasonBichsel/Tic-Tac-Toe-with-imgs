@@ -97,3 +97,16 @@ function generateWinningCombos() {
 
     return combos;
 }
+// Wechselt den Startspieler und zeigt eine Meldung an
+function toggleStartingPlayer() {
+    currentPlayer = currentPlayer === 'Red' ? 'Blue' : 'Red';
+    alert(`Der Startspieler ist jetzt ${currentPlayer}`);
+}
+
+// Setzt das Spiel zurück
+function resetGame() {
+    winnerDiv.textContent = ''; // Der Gewinntext wird gelöscht
+    createBoard(); // Erstellt das Spielfeld neu
+}
+
+createBoard(); // Erstellt das Spielfeld beim Laden der Seite
