@@ -57,3 +57,43 @@ function checkWinner() {
         return combo.every(index => gameBoard[index] === currentPlayer); // Gibt true zurück, wenn eine Kombination vollständig erfüllt ist
     });
 }
+
+// Hilfe aus dem internet geholt
+// Generiert alle möglichen Gewinnkombinationen
+function generateWinningCombos() {
+    const combos = []; // Array, in dem alle möglichen Gewinnkombinationen gespeichert werden
+
+    // Reihen (Horizontal)
+    for (let row = 0; row < boardSize; row++) { // Geht durch jede Zeile
+        const combo = []; // Erstellt ein Array für jede Zeile
+        for (let col = 0; col < boardSize; col++) { // Geht durch jede Spalte der Zeile
+            combo.push(row * boardSize + col); // Berechnet den Index für die Zellen der aktuellen Zeile
+        }
+        combos.push(combo); // Fügt die Zeilenkombinationen zu den Gewinnkombinationen hinzu
+    }
+
+    // Spalten (Vertikal)
+    for (let col = 0; col < boardSize; col++) { // Geht durch jede Spalte
+        const combo = []; // Erstellt ein Array für jede Spalte
+        for (let row = 0; row < boardSize; row++) { // Geht durch jede Zeile der Spalte
+            combo.push(row * boardSize + col); // Berechnet den Index für die Zellen der aktuellen Spalte
+        }
+        combos.push(combo); // Fügt die Spaltenkombinationen zu den Gewinnkombinationen hinzu
+    }
+    
+    // Diagonale 1 (von oben links nach unten rechts)
+    const diagonal1 = [];
+    for (let i = 0; i < boardSize; i++) {
+        diagonal1.push(i * boardSize + i); // Berechnet die Indizes für die Zellen der ersten Diagonale
+    }
+    combos.push(diagonal1);
+
+    // Diagonale 2 (von oben rechts nach unten links)
+    const diagonal2 = [];
+    for (let i = 0; i < boardSize; i++) {
+        diagonal2.push((i + 1) * boardSize - (i + 1)); // Berechnet die Indizes für die Zellen der zweiten Diagonale
+    }
+    combos.push(diagonal2);
+
+    return combos;
+}
