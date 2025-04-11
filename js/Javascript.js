@@ -31,3 +31,29 @@ function createBoard() {
         board.appendChild(cell); // Fügt die Zelle als Kind-Element dem Spielfeld hinzu
     });
 }
+
+function handleMove(event) { // Reagiert, wenn eine Zelle angeklickt wird
+    const index = event.target.dataset.index; // Holt den Index der angeklickten Zelle
+    if (gameBoard[index] || checkWinner()) return; // Überprüft, ob die Zelle schon belegt ist oder ob das Spiel schon vorbei ist
+
+    gameBoard[index] = currentPlayer; // Markiert die angeklickte Zelle mit dem aktuellen Spieler
+    const img = document.createElement('img'); // Erstellt ein <img>-Element
+    img.src = images[currentPlayer]; // Fügt das Bild des aktuellen Spielers ein
+    event.target.appendChild(img); // Fügt das <img>-Element der angeklickten Zelle hinzu
+
+    if (checkWinner()) { // Überprüft nach jedem Zug, ob ein Spieler gewonnen hat
+        winnerDiv.textContent = `${currentPlayer} gewinnt!`;
+        return;
+    }
+
+    currentPlayer = currentPlayer === 'Red' ? 'Blue' : 'Red'; // Wechsel des Spielers
+}
+
+// Überprüft, ob jemand gewonnen hat
+function checkWinner() {
+    const winningCombos = generateWinningCombos(); // Ruft die Funktion auf, um alle möglichen Gewinnkombinationen zu generieren
+
+    return winningCombos.some(combo => { // Überprüft, ob mindestens eine Gewinnkombination erfüllt ist
+        return combo.every(index => gameBoard[index] === currentPlayer); // Gibt true zurück, wenn eine Kombination vollständig erfüllt ist
+    });
+}
